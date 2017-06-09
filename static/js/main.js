@@ -78,15 +78,39 @@ $(function () {});
 "use strict";
 
 $(function () {});
+'use strict';
+
+$(function () {
+    function colToggleActivate() {
+        if ($(window).width() <= 760) {
+            $('.footer__col').addClass('colhide');
+        } else {
+            $('.colhide').removeClass('colhide');
+        }
+    }
+
+    function colToggleWork() {
+        if ($(window).width() <= 760) {
+            $(this).next().finish().slideToggle();
+            $(this).parent().toggleClass('colhide');
+        }
+    }
+
+    $('.footer__cap').on('click', colToggleWork);
+
+    colToggleActivate();
+    $(window).on('resize', colToggleActivate);
+});
 "use strict";
 
 $(function () {});
-"use strict";
+'use strict';
 
-$(function () {});
-"use strict";
-
-$(function () {});
+$(function () {
+    $('.menu').on('click', function () {
+        $('.navigation_mobile').finish().slideToggle(100);
+    });
+});
 "use strict";
 
 $(function () {});
@@ -163,12 +187,25 @@ $(function () {});
 "use strict";
 
 $(function () {});
-"use strict";
+'use strict';
 
-$(function () {});
-"use strict";
+$(function () {
+    $('.navigation').children().clone().appendTo('.navigation_mobile');
+});
+'use strict';
 
-$(function () {});
+$(function () {
+    function offersList() {
+        if ($(window).width() <= 760) {
+            $('.offer_index:not(:nth-child(1)):not(:nth-child(2))').addClass('hide');
+        } else {
+            $('.offer.hide').removeClass('hide');
+        }
+    }
+
+    offersList();
+    $(window).on('resize', offersList);
+});
 "use strict";
 
 $(function () {});
@@ -218,9 +255,22 @@ $(function () {});
 "use strict";
 
 $(function () {});
-"use strict";
+'use strict';
 
-$(function () {});
+$(function () {
+    function tableWidth() {
+        var table = $('.table_online'),
+            cells = $('.table_online .table__cell:first-child').length,
+            width = cells * 156;
+
+        $(table).css('width', width);
+    }
+
+    if ($('.table_online').length !== 0) {
+        tableWidth();
+        $(window).on('resize', tableWidth);
+    }
+});
 'use strict';
 
 $(function () {
